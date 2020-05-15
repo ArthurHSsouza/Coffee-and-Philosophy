@@ -1,0 +1,25 @@
+{
+  "name": "blog_jairo_node",
+  "version": "1.0.0",
+  "description": "Jairo blog files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.9.12",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "save": "^2.4.0",
+    "slug": "^2.1.1"
+  }
+}

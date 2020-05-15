@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-body">
+        <h3>Pagina de categorias</h3><hr><br>
+        <b><p>Número de categorias: {{quantidade}}</p></b>
+        <a class="btn btn-success mt-2" style="color: white;" href="/admin/addCategoria">nova categoria</a><br><br>
+        {{#if categoria}}
+        {{#each categoria}}
+               <div class="card">
+                   <div class="card-body">
+                        <h3>Nome: {{nome}}</h3><br>
+                   <p>Slug: {{slug}}</p>
+                 <a href="/admin/deletarCategoria/{{_id}}"><button class="btn btn-danger">Deletar</button></a>
+                 <a href="/admin/editarCategoria/{{_id}}"><button class="btn btn-dark">Editar</button></a>
+                   </div>
+               </div>
+               <br>
+               {{/each}}
+        {{else}}
+        <br>
+              <h3 style="color: gray;">Não existem categorias registradas</h3>
+        {{/if}}
+    </div>
+</div>

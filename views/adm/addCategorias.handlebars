@@ -1,0 +1,20 @@
+{{#if err}}
+{{#each err}}
+<div class="alert alert-danger">{{text}}</div>
+{{/each}}
+{{/if}}
+<div class="card">
+    <div class="card-body">
+        <h2>Cadastro de Categorias: </h2><br><hr><br>
+     <form action="/admin/novaCategoria" method="POST">
+       <label for="nome"><b>Nome:</b></label>
+       <input type="text" name="nome" class="form-control" required><br>
+       <label for="slug"><b>Slug:</b></label>
+       <input type="text" name="slug" class="form-control" required><br>
+       <button type="submit" class="btn btn-success">Criar</button></a>
+     </form>
+    </div>
+</div>
+
+
+

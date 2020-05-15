@@ -1,0 +1,44 @@
+<style>
+  #card{
+      background-color: rgb(236, 236, 236);
+  }
+
+  .card{
+      border-color: rgb(204, 204, 204);
+  }
+</style>
+<br>
+      <div class="card">
+        <div class="card-body">
+           <div class="jumbotron" id="jumbotron">
+           <h1 class="display-4">Bem vindo ao café & Filosofia</h1>
+           <p class="lead">Aqui, somos apaixonados por filosofia</p>
+           <hr class="mt-4">
+           <p>Inscreva-se para receber as maiores novidades do nosso blog</p>
+           <a class="btn btn-primary btn-lg btn-danger" href="/user/formCadastro" role="button">Inscreva-se</a>
+         </div>
+        </div>
+       </div>
+       
+  
+
+<div class="card">
+  <div class="card-body">
+    <h2>Postagens recentes: </h2><br><br>
+{{#each categorias}}
+  <div class="card">
+     <div class="card-body border" id="card">
+      <h3 style ="color: rgb(187, 45, 45);">{{titulo}}</h3><br>
+      <p>{{descricao}}</p>
+      <p>Categoria: {{categoria.nome}}</p>
+      <small>{{date}}</small><br>
+      <a href="/exibirPost/{{slug}}" class="btn btn-dark mt-4" style="color: white;">Ler mais</a>
+     </div>
+  </div>
+  <br>
+  {{/each}}
+  </div>
+</div>
+
+
+   

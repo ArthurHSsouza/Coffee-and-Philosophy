@@ -1,0 +1,22 @@
+{{#if err}}
+{{#each err}}
+<div class="alert alert-danger">{{text}}</div>
+{{/each}}
+{{/if}}
+
+<div class="card">
+    <div class="card-body">
+        <h3>Cadastro: </h3><br>
+        <form action="/user/novoUsuario" method="POST">
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" class="form-control" required>
+            <label for="email">E-mail: </label>
+            <input type="email" name="email"  class="form-control" required>
+            <label for="senha">Senha: </label>
+            <input type="password" name="senha"  class="form-control"  required>
+            <label for="senha2">Redigite a senha: </label>
+            <input type="password" name="senha2" class="form-control" required><br>
+            <button class="btn btn-success" type="submit">Enviar</button>
+        </form>
+    </div>
+</div>

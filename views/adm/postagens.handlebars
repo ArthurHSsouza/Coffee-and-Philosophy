@@ -1,0 +1,31 @@
+<div class="card">
+    <div class="card-body">
+        <h3>Página de postagens</h3><hr><br>
+       <b><p>Número de postagens: {{quantidade}}</p></b> 
+        <a href="/admin/addPostagens" class="btn btn-success mt-2" style="color: white;">nova postagem</a><br><br>
+                {{#if postagens}}  
+            {{#each postagens}}  
+            <div class="card">
+             <div class="card-body">
+             <h2>{{titulo}}</h2>
+             <p>{{descricao}}</p>
+              <p>Slug: {{slug}}</p>
+             <p>Categoria: {{categoria.nome}}</p>
+             <small>{{date}}</small><br><br>
+             {{conteudo}}
+             <br>
+             <a class="btn btn-danger mt-5" style="color: white;" href="/admin/deletarPostagem/{{_id}}">Deletar</a>
+              <a class="btn btn-dark mt-5" style="color: white;" href="/admin/editarPostagem/{{_id}}">Editar</a>
+              </div>  
+             </div>
+             <br>
+             {{/each}}
+           
+      
+         {{else}}
+         <br>
+         <h3 style="color: gray">Não existem postagens registradas</h3>
+        {{/if}}
+    </div>
+</div>
+<br><br>

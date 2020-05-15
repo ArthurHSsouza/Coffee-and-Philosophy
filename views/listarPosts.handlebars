@@ -1,0 +1,22 @@
+<div class="card">
+    <div class="card-body">
+        <h2 style="color:  rgb(187, 45, 45);">{{categoria}}</h2><br>
+        {{#if postagens}}
+         {{#each postagens}}
+          <div class="card">
+              <div class="card-body" >
+                  <h5>{{titulo}}</h5><br>
+                  <p><b>{{descricao}}</b></p>
+                  <small>{{date}}</small>
+                  <div class="text-right">
+                    <a style="position:relative; top:  -50px;" href="/exibirPost/{{slug}}" class="btn btn-danger">Ler mais</a>
+                  </div> 
+              </div>
+          </div>
+          {{/each}}
+        {{else}}
+        <br>
+        <h3 style="color:grey;">Não existem postagens nessa categoria</h3>
+        {{/if}}
+    </div>
+</div>

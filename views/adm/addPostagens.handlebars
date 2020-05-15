@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+{{#if err}}
+{{#each err}}
+<div class="alert alert-danger">{{text}}</div>
+{{/each}}
+{{/if}}
+        <h2>Cadastro de postagens: </h2><br><hr>
+        <div class="card">
+            <div class="card-body">
+ <form action="/admin/novaPostagem" method="POST">
+         <label for="titulo"><b>Titulo:</b></label>
+         <input type="text" name="titulo" class="form-control" >
+         <label for="descricao"><b>Descricão:</b></label>
+         <input type="text" name="descricao" class="form-control" >
+         <label for="slug"><b>Slug: </b></label>
+         <input type="text" name="slug" class="form-control" >
+          <label for="conteudo"><b>Conteudo:</b></label>
+         <textarea name="conteudo" cols="15" rows="10" class="form-control"></textarea><br>
+        <label for="categoria"><b>Categoria:</b></label>
+         <select name="categoria" class="form-control">
+          {{#each categoria}}
+          <option value="{{_id}}">{{nome}}</option>
+          {{/each}}
+         </select><br>
+         <a><button class="btn btn-success" style="color: white;">Criar</button></a>
+         <br><br><br><br>
+        </form>
+            </div>
+        </div>
+       
+    </div>
+</div>

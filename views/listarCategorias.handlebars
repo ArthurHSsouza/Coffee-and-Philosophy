@@ -1,0 +1,25 @@
+ <style>
+      .card{
+          border-color: rgb(204, 204, 204);
+      }
+ </style>
+<br>
+<div class="card">
+    <div class="card-body">
+        <h2 style="color:  rgb(187, 45, 45);">Lista de categorias</h2><br><br>
+         
+         {{#if categorias}}
+         {{#each categorias}}
+              <div class="card">
+                  <div class="card-body border">
+                      <h5>{{nome}}</h5><br>
+                      <a href="/listarPosts/{{_id}}" class="btn btn-danger">Ver postagens</a>
+                  </div>
+              </div><br>
+              {{/each}}
+           {{else}}
+            <h3 style="color: gray;">Não existem categorias registradas</h3>
+            {{/if}}
+    </div>
+</div>
+
