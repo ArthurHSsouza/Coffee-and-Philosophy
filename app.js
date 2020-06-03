@@ -13,8 +13,6 @@ require('./models/categoria')
 require('./config/auth')(passport)
 const postagem = mongoose.model("postagens")
 const categoria = mongoose.model("categorias")
-
-
 const path = require("path")
 //configurando módulos
 //express

@@ -12,7 +12,7 @@
         <label for="slug">Slug: </label>
         <input type="text" name="slug"  class="form-control" value="{{postagem.slug}}" required>
         <label for="conteudo">Conteudo: </label>
-        <textarea name="conteudo" id=""class="form-control"  cols="15" rows="10" id="conteudo">{{postagem.conteudo}}</textarea><br>
+        <textarea name="conteudo" class="form-control"  cols="15" rows="10" id="conteudo">{{postagem.conteudo}}</textarea><br>
         <label for="categoria">Categoria: </label>
         <select name="categoria" class="form-control" value="{{postagem.categoria}}">
             {{#each categorias}}
