@@ -16,7 +16,7 @@
          <label for="slug"><b>Slug: </b></label>
          <input type="text" name="slug" class="form-control" >
           <label for="conteudo"><b>Conteudo:</b></label>
-         <textarea name="conteudo" cols="15" rows="10" class="form-control"></textarea><br>
+         <textarea name="conteudo" cols="15" rows="10" id="conteudo" class="form-control"></textarea><br>
         <label for="categoria"><b>Categoria:</b></label>
          <select name="categoria" class="form-control">
           {{#each categoria}}
@@ -31,3 +31,12 @@
        
     </div>
 </div>
+ <script src="/tinymce/tinymce.min.js"></script>
+ <script>
+    tinymce.init({
+     language: 'pt_BR',
+     selector: '#conteudo',
+     plugins: ["image print link hr lists searchreplace wordcount fullscreen insertdatetime media save table paste emoticons"]
+  }) 
+ </script>
+ 
