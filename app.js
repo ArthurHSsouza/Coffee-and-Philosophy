@@ -1,3 +1,4 @@
+//Arquivo principal
 //Importando módulos
 const express = require('express')
 const handlebars = require('express-handlebars')
