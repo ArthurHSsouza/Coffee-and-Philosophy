@@ -25,6 +25,7 @@
 <div class="card">
   <div class="card-body">
     <h2>Postagens recentes: </h2><br><br>
+    {{#if categorias}}
 {{#each categorias}}
   <div class="card">
      <div class="card-body border" id="card">
@@ -37,8 +38,12 @@
   </div>
   <br>
   {{/each}}
+  {{else}}
+   <h2 style="color: gray">Nenhuma postagem encontrada</h2>
+  {{/if}}
   </div>
 </div>
+<br><br><br>
 
 
    

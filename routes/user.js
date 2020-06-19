@@ -10,7 +10,6 @@ router.get('/formCadastro',(req,res)=>{
    res.render("user/formCadastro")
 })
 
-
 router.post('/novoUsuario',(req,res)=>{
    var err = []
 
@@ -87,6 +86,8 @@ router.get('/formLogin',(req,res)=>{
 router.post('/auth',passport.authenticate('local',{
     failureRedirect: '/user/formLogin',
     failureFlash: true
+    
+    
 }),(req,res)=>{
 
     req.flash("success_msg","Bem vindo "+req.user.nome+"!")

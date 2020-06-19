@@ -196,6 +196,7 @@ router.post('/novaCategoria',(req,res)=>{
 
       router.get('/editarPostagem/:id',(req,res)=>{
            postagem.findOne({_id: req.params.id}).lean().then((postagem)=>{
+               console.log(postagem)
                categoria.find().lean().then((categorias)=>{
                    res.render("adm/editarPostagem",{postagem: postagem,categorias: categorias}) 
                }).catch((err)=>{
@@ -212,24 +213,52 @@ router.post('/novaCategoria',(req,res)=>{
       })
 
       router.post('/editarPostagem',(req,res)=>{
-           var where = req.body.id
+          
+        
+           console.log(`${req.body.titulo}\n${req.body.id}
+           \n${req.body.descricao}\n${req.body.slug}\n
+           ${req.body.conteudo}\n${req.body.categoria}`)
+
+
+           postagem.findOne({_id: req.body.id}).then((Postagem)=>{
+               Postagem.titulo = req.body.titulo
+               Postagem.descricao =req.body.descricao
+               Postagem.slug = req.body.slug
+               Postagem.conteudo = req.body.conteudo
+               Postagem.categoria = req.body.categoria
+
+               Postagem.save().then(()=>{
+                req.flash("success_msg","Postagem editada com sucesso")
+                res.redirect('/admin/postagens')
+               }).catch((err)=>{
+                console.log("Erro ao editar postagem: "+err)
+                req.flash("error_msg","Erro ao editar postagem")
+                res.redirect('/admin/postagens')
+            })
+           })
+          
+
+          /*
+           var where = _id = req.body.id
            var values = {
                titulo: req.body.titulo,
                descricao: req.body.descricao,
                slug: req.body.slug,
                conteudo: req.body.conteudo,
-               categoria: req.body.categoria
+               categoria: req.body.categoria,
+               date: Date.now()
            }
+         values.slug = slug(values.slug)
            
-           values.slug = slug(values.slug)
-           postagem.findOneAndUpdate(where,values).then(()=>{
+           
+           postagem.findOneAndUpdate(where,values,{useFindAndModify: false}).then(()=>{
                req.flash("success_msg","Postagem editada com sucesso")
                res.redirect('/admin/postagens')
            }).catch((err)=>{
                console.log("Erro ao editar postagem: "+err)
                req.flash("error_msg","Erro ao editar postagem")
                res.redirect('/admin/postagens')
-           })
+           })*/
       })
 
  module.exports = router
