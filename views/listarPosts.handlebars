@@ -1,6 +1,7 @@
 <div class="card">
     <div class="card-body">
-        <h2 style="color:  rgb(187, 45, 45);">{{categoria}}</h2><br>
+        <br>
+        <h1 style="color:  rgb(187, 45, 45);">{{categoria}}</h1><br>
         {{#if postagens}}
          {{#each postagens}}
           <div class="card">
@@ -12,7 +13,7 @@
                     <a style="position:relative; top:  -50px;" href="/exibirPost/{{slug}}" class="btn btn-danger">Ler mais</a>
                   </div> 
               </div>
-          </div>
+          </div><br>
           {{/each}}
         {{else}}
         <br>

@@ -7,6 +7,7 @@ const admin = require('./routes/admin')
 const user = require('./routes/user')
 const bodyParser = require("body-parser")
 const session = require('express-session')
+const util = require('util')
 const flash = require("connect-flash")
 const passport = require('passport')
 require('./models/postagem')
@@ -86,11 +87,24 @@ app.get('/exibirPost/:slug',(req,res)=>{
 })
 
 app.get('/listarCategorias',(req,res)=>{
-    quant = []
-    categoria.find().lean().then((categorias)=>{
-         res.render('listarCategorias',{categorias: categorias})  
-        })
-    });
+   
+    var cat = []
+    
+
+    async function main(){
+
+         var postagens
+         var categorias = await categoria.find().lean()
+        for(var i=0; i<categorias.length;i++){
+         postagens = await postagem.find({categoria: categorias[i]._id}).lean()
+         cat.push({categoria: categorias[i], quantidade: postagens.length}) 
+        }
+        res.render('listarCategorias',{result: cat})         
+    }
+       main()
+        
+    })
+
         
 app.get("/listarPosts/:id",(req,res)=>{
     postagem.find({categoria: req.params.id}).lean().then((postagens)=>{

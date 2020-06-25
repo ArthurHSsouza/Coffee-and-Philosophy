@@ -8,15 +8,16 @@
     <div class="card-body">
         <h2 style="color:  rgb(187, 45, 45);">Lista de categorias</h2><br><br>
          
-         {{#if categorias}}
-         {{#each categorias}}
+        {{#if result}}
+         {{#each result}}
               <div class="card">
                   <div class="card-body border">
-                      <h5>{{nome}}</h5><br>
-                      <a href="/listarPosts/{{_id}}" class="btn btn-danger">Ver postagens</a>
+                      <h5>{{categoria.nome}}</h5>
+                       <h6>Número de postagens: {{quantidade}}</h6><br>
+                      <a href="/listarPosts/{{categoria._id}}" class="btn btn-danger">Ver postagens</a>
                   </div>
               </div><br>
-              {{/each}}
+            {{/each}}
            {{else}}
             <h3 style="color: gray;">Não existem categorias registradas</h3>
             {{/if}}
