@@ -134,7 +134,7 @@ router.post('/novaCategoria',(req,res)=>{
                 err.push({text: "Descrição inválida"})
             }
             if(req.body.conteudo == "" || typeof req.body.conteudo == undefined || req.body.conteudo == null){
-                err.push({text: "Preenha o conteúdo"})
+                err.push({text: "Preencha o conteúdo"})
             }
             if(typeof req.body.categoria == undefined || req.body.categoria == null){
                 err.push({text: "Categoria inválida"})
@@ -214,12 +214,38 @@ router.post('/novaCategoria',(req,res)=>{
 
       router.post('/editarPostagem',(req,res)=>{
           
-        
            console.log(`${req.body.titulo}\n${req.body.id}
            \n${req.body.descricao}\n${req.body.slug}\n
            ${req.body.conteudo}\n${req.body.categoria}`)
 
+           
+           var err = []
+           if(req.body.titulo == "" || typeof req.body.titulo == undefined || req.body.titulo == null){
+               err.push({text: "Titulo inválido"})
+           }
+           if(req.body.descricao == "" || typeof req.body.descricao == undefined || req.body.descricao == null){
+               err.push({text: "Descrição inválida"})
+           }
+           if(req.body.conteudo == "" || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+               err.push({text: "Preencha o conteúdo"})
+           }
+           if(typeof req.body.categoria == undefined || req.body.categoria == null){
+               err.push({text: "Categoria inválida"})
+           }
+           if(req.body.slug == "" || typeof req.body.slug == undefined || req.body.slug == null){
+               err.push({text: "Slug inválido"})
+           }
 
+           if(err.length > 0){
+               categoria.find().lean().then((categoria)=>{
+                  res.render("adm/editarPostagem",{err: err,categoria:categoria}) 
+               }).catch((err)=>{
+                   console.log("Erro ao recuperar categorias: "+err)
+                   req.flash("error_msg","A página de cadastro de categorias não está disponível")
+                   res.redirect("/admin")
+               })  
+            }
+            
            postagem.findOne({_id: req.body.id}).then((Postagem)=>{
                Postagem.titulo = req.body.titulo
                Postagem.descricao =req.body.descricao
