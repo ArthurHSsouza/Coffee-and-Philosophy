@@ -196,7 +196,7 @@ router.post('/novaCategoria',(req,res)=>{
 
       router.get('/editarPostagem/:id',(req,res)=>{
            postagem.findOne({_id: req.params.id}).lean().then((postagem)=>{
-               console.log(postagem)
+               //console.log(postagem)
                categoria.find().lean().then((categorias)=>{
                    res.render("adm/editarPostagem",{postagem: postagem,categorias: categorias}) 
                }).catch((err)=>{
@@ -214,9 +214,9 @@ router.post('/novaCategoria',(req,res)=>{
 
       router.post('/editarPostagem',(req,res)=>{
           
-           console.log(`${req.body.titulo}\n${req.body.id}
-           \n${req.body.descricao}\n${req.body.slug}\n
-           ${req.body.conteudo}\n${req.body.categoria}`)
+           /*console.log(`\n${req.body.titulo}\n${req.body.id}
+           ${req.body.descricao}\n${req.body.slug}\n
+           ${req.body.conteudo}\n${req.body.categoria}`)*/
 
            
            var err = []
@@ -236,16 +236,23 @@ router.post('/novaCategoria',(req,res)=>{
                err.push({text: "Slug inválido"})
            }
 
+
            if(err.length > 0){
-               categoria.find().lean().then((categoria)=>{
-                  res.render("adm/editarPostagem",{err: err,categoria:categoria}) 
-               }).catch((err)=>{
+               postagem.findOne({_id: req.body.id}).lean().then((postagem)=>{
+                 categoria.find().lean().then((categoria)=>{
+                  res.render("adm/editarPostagem",{err: err, categorias: categoria, postagem: postagem}) 
+                   }).catch((err)=>{
                    console.log("Erro ao recuperar categorias: "+err)
-                   req.flash("error_msg","A página de cadastro de categorias não está disponível")
+                   req.flash("error_msg","A página de edição desta postagem não está disponível tente novamente mais tarde")
                    res.redirect("/admin")
                })  
-            }
-            
+               }).catch((err)=>{
+                   console.log("Erro ao recuperar postagem: "+err)
+                   req.flash('error-msg',"A Página de edição desta postagem não está disponível, tente novamente mais tarde")
+                   res.redirect('/admin')
+               })
+              
+            }else{
            postagem.findOne({_id: req.body.id}).then((Postagem)=>{
                Postagem.titulo = req.body.titulo
                Postagem.descricao =req.body.descricao
@@ -262,6 +269,7 @@ router.post('/novaCategoria',(req,res)=>{
                 res.redirect('/admin/postagens')
             })
            })
+        }
           
 
           /*
