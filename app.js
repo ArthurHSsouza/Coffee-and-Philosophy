@@ -42,7 +42,7 @@ mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azur
 app.use(session({
     secret: 'bolinho de milho',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
     
 }))
 
