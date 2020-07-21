@@ -22,7 +22,8 @@ const app = express()
 
 //mongoose
 mongoose.promise = global.Promise
-mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azure.mongodb.net/blogAppJairo',{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
+mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azure.mongodb.net/blogAppJairo',
+{useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
        console.log("Conectado com sucesso ao mongodb")
 }).catch((err)=>{
     console.log("Erro ao se conectar ao mongodb: "+err)
@@ -90,11 +91,10 @@ app.get('/listarCategorias',(req,res)=>{
    
     var cat = []
     
-
     async function main(){
 
-         var postagens
-         var categorias = await categoria.find().lean()
+        var postagens
+        var categorias = await categoria.find().lean()
         for(var i=0; i<categorias.length;i++){
          postagens = await postagem.find({categoria: categorias[i]._id}).lean()
          cat.push({categoria: categorias[i], quantidade: postagens.length}) 

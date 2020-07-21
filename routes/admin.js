@@ -270,29 +270,6 @@ router.post('/novaCategoria',(req,res)=>{
             })
            })
         }
-          
-
-          /*
-           var where = _id = req.body.id
-           var values = {
-               titulo: req.body.titulo,
-               descricao: req.body.descricao,
-               slug: req.body.slug,
-               conteudo: req.body.conteudo,
-               categoria: req.body.categoria,
-               date: Date.now()
-           }
-         values.slug = slug(values.slug)
-           
-           
-           postagem.findOneAndUpdate(where,values,{useFindAndModify: false}).then(()=>{
-               req.flash("success_msg","Postagem editada com sucesso")
-               res.redirect('/admin/postagens')
-           }).catch((err)=>{
-               console.log("Erro ao editar postagem: "+err)
-               req.flash("error_msg","Erro ao editar postagem")
-               res.redirect('/admin/postagens')
-           })*/
       })
 
  module.exports = router
