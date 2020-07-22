@@ -123,7 +123,7 @@ app.get('/contato',(req,res)=>{
 })
 
 // Conexão
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 app.listen(PORT,(err)=>{
     if(err){
         console.log("Erro ao se conectar na porta: "+err)

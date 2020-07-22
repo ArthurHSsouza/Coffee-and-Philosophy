@@ -165,6 +165,7 @@ router.post('/novaCategoria',(req,res)=>{
                            categoria: req.body.categoria,
                            slug: req.body.slug
                           }
+                          console.log(req.body.conteudo)
                            novaPostagem.slug = slug(novaPostagem.slug)
                            new postagem(novaPostagem).save().then(()=>{
                                req.flash("success_msg","Postagem cadastrada com sucesso")
