@@ -22,7 +22,7 @@ const app = express()
 
 //mongoose
 mongoose.promise = global.Promise
-mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azure.mongodb.net/blogAppJairo',
+mongoose.connect('Aqui vai sua conexão com o mongoDB',
 {useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
        console.log("Conectado com sucesso ao mongodb")
 }).catch((err)=>{
