@@ -11,8 +11,11 @@
     </div>
 </div>
 <script>
-    let video = document.querySelectorAll('iframe');
+    let videos = document.querySelectorAll('iframe');
     let width = '80%';
-    video.setAttribute('width',width)
+    videos.forEach(video => {
+        video.setAttribute('width',width)
+    })
+    
 
 </script>
