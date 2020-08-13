@@ -1,2 +1,4 @@
-# Blog_filosofia
-Blog de filosofia com CRUD completo feito em Node.js com MongoDB. Ainda em versão inicial.
+# Café & filosofia
+
+Café & filosofia é um blog criado com ser apresentado como trabalho acadêmico da matéria de filosofia do IFSP - campus Cubatão.
+ 
