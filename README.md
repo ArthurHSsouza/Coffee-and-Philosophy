@@ -22,23 +22,14 @@ Café & filosofia é um blog criado com ser apresentado como trabalho acadêmico
    - Connect-Flash
    
    
-   
-    #### Tela de entrada do site, aqui é possível realizar o cadastro e visualizar as postagens.
-    
+   #### Tela de entrada do site, aqui é possível realizar o cadastro e visualizar as postagens.
    ![alt text](https://i.ibb.co/Xx9f0W1/2020-08-13-2.png)
    
    
-  
-   
-   
    #### Tela da administração, para acessar, é necessário ter privilégios administrativos
-   
    ![alt text](https://i.ibb.co/5RWcBfQ/2020-08-13-3.png)
    
-   
-   
    #### Tela de listagem de categorias
-    
   ![alt text](https://i.ibb.co/MhFwghx/2020-08-13-5.png)
   
  
