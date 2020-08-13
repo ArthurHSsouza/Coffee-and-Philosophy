@@ -22,7 +22,7 @@ Café & filosofia é um blog criado com ser apresentado como trabalho acadêmico
    - Connect-Flash
    
    
-   ![alt text](https://ibb.co/QvZ7SJL)
+   ![alt text](https://i.ibb.co/Xx9f0W1/2020-08-13-2.png)
    
    
    
