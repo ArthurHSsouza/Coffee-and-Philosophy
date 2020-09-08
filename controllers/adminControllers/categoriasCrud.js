@@ -4,14 +4,9 @@ require("../../models/postagem")
 const categoria = mongoose.model('categorias')
 const postagem = mongoose.model('postagens')
 const slug = require('slug')
-require("../../config/adminSecure")(router)
 
 module.exports = class categoriasCrud{
      
-    main(req,res){
-        res.render('adm/adm')
-    }
-
     getCategorias(req,res){
         categoria.find().lean().then((categorias)=>{
              res.render('adm/categorias',{categoria: categorias, quantidade: categorias.length})

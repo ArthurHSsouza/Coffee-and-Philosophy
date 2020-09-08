@@ -4,9 +4,8 @@ require("../../models/postagem")
 const categoria = mongoose.model('categorias')
 const postagem = mongoose.model('postagens')
 const slug = require('slug')
-require("../../config/adminSecure")(router)
 
-class postagensCrud{
+module.exports = class postagensCrud{
 
     postagens(req,res){
         postagem.find().lean().populate('categoria').then((postagens)=>{
@@ -173,5 +172,3 @@ class postagensCrud{
     }
 
 }
-
-module.exports = postagensCrud;
