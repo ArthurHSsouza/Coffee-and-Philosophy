@@ -3,26 +3,29 @@
 const express = require('express')
 const handlebars = require('express-handlebars')
 const mongoose = require("mongoose")
-const admin = require('./routes/admin')
-const user = require('./routes/user')
-const bodyParser = require("body-parser")
+
 const session = require('express-session')
-const util = require('util')
 const flash = require("connect-flash")
 const passport = require('passport')
+const path = require("path")
+
+//routes
+const admin = require('./routes/admin')
+const user = require('./routes/user')
+const index = require('./routes/index')
+
 require('./models/postagem')
 require('./models/categoria')
 require('./config/auth')(passport)
-const postagem = mongoose.model("postagens")
-const categoria = mongoose.model("categorias")
-const path = require("path")
+
+
 //configurando módulos
 //express
 const app = express()
 
 //mongoose
 mongoose.promise = global.Promise
-mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azure.mongodb.net/blogAppJairo',
+mongoose.connect('credenciais do mongodb devem vir aqui',
 {useNewUrlParser: true, useUnifiedTopology: true}).then(()=>{
        console.log("Conectado com sucesso ao mongodb")
 }).catch((err)=>{
@@ -30,32 +33,26 @@ mongoose.connect('mongodb+srv://artoriaskillerxdie:18901347a@cluster0-a9kmc.azur
 })
 
 //handlebars
-
    app.engine('handlebars',handlebars({defaultLayout: 'main'}))
    app.set('view engine', 'handlebars')
 
 //body-Parser
-
-  app.use(bodyParser.urlencoded({extended: false}))
-  app.use(bodyParser.json())
+  app.use(express.urlencoded({extended: false}))
+  app.use(express.json())
 
 //express-session
 app.use(session({
     secret: 'bolinho de milho',
     resave: false,
     saveUninitialized: false
-    
 }))
 
 //passport
-
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 //connect-flash
 app.use(flash())
-
 
 //middleware para variaveis globais
 app.use((req,res,next)=>{
@@ -73,54 +70,7 @@ app.use('/static',express.static(path.join(__dirname+"/public")))
 //Rotas
 app.use('/admin',admin)
 app.use('/user', user)
-
-app.get("/",(req,res)=>{
-    postagem.find().lean().populate('categoria').then((categorias)=>{
-        res.render('inicio',{categorias: categorias}) 
-    })
-    
-})
-
-app.get('/exibirPost/:slug',(req,res)=>{
-    postagem.findOne({slug: req.params.slug}).lean().populate('categoria').then((postagem)=>{
-        res.render('exibirPostagem',{postagem: postagem})
-    })
-})
-
-app.get('/listarCategorias',(req,res)=>{
-   
-    var cat = []
-    
-    async function main(){
-
-        var postagens
-        var categorias = await categoria.find().lean()
-        for(var i=0; i<categorias.length;i++){
-         postagens = await postagem.find({categoria: categorias[i]._id}).lean()
-         cat.push({categoria: categorias[i], quantidade: postagens.length}) 
-        }
-        res.render('listarCategorias',{result: cat})         
-    }
-       main()
-        
-    })
-
-        
-app.get("/listarPosts/:id",(req,res)=>{
-    postagem.find({categoria: req.params.id}).lean().then((postagens)=>{
-        categoria.findOne({_id: req.params.id}).lean().then((categoria)=>{
-           res.render("listarPosts",{postagens: postagens, categoria: categoria.nome})  
-        })
-    })
-})
-
-app.get('/quemSomos',(req,res)=>{
-      res.render('quemSomos')
-})
-
-app.get('/contato',(req,res)=>{
-    res.render('contato')
-})
+app.use(index)
 
 // Conexão
 const PORT = process.env.PORT || 3000
