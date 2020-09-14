@@ -56,10 +56,12 @@ module.exports = class userController{
                                 }else{
                                     novoUsuario.senha = hash
                                     new usuario(novoUsuario).save().then(()=>{
-                                        passport.authenticate('local', (req,res) =>{
+                                        
+                                        /*passport.authenticate('local',{ failureRedirect: '/login' }, (req,res) =>{
                                             req.flash("success_msg","Bem vindo "+req.user.nome+"!")
                                             res.redirect('/')
-                                        })
+                                        })*/
+                                            
                                         req.flash("success_msg","Usuário criado com sucesso")
                                         res.redirect('/')
                                     }).catch((err)=>{

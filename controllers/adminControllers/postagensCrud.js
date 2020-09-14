@@ -61,21 +61,20 @@ module.exports = class postagensCrud{
                        res.redirect('/admin/addPostagens')
                    }else{
                                 
-                        novaPostagem = {
+                        var novaPostagem = {
                            titulo: req.body.titulo,
                            descricao: req.body.descricao,
                            conteudo: req.body.conteudo,
                            categoria: req.body.categoria,
                            slug: req.body.slug
                           }
-                          console.log(req.body.conteudo)
                            novaPostagem.slug = slug(novaPostagem.slug)
                            new postagem(novaPostagem).save().then(()=>{
                                req.flash("success_msg","Postagem cadastrada com sucesso")
                                res.redirect("/admin/postagens")
                            }).catch((err)=>{
                                console.log("Erro ao salvar postagem: "+err)
-                               req.flash("error_msg","Erro ao salvar categoria")
+                               req.flash("error_msg","Erro ao salvar postagem")
                                res.redirect('/admin/postagens')
                            })
                    }

@@ -15,7 +15,7 @@ router.get('/addCategoria',controller.categorias.addCategorias)
 router.post('/novaCategoria',controller.categorias.newCategoria)
 router.get('/editarCategoria/:id',controller.categorias.editCategoriaForm)
 router.post('/editarCategoria',controller.categorias.editCategoria)
-router.get('/deletarPostagem/:id',controller.categorias.deleteCategoria)
+router.get('/deletarCategoria/:id',controller.categorias.deleteCategoria)
 
 // CRUD de postagens
 router.get('/postagens', controller.postagens.postagens)

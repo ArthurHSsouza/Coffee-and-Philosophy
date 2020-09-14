@@ -41,10 +41,10 @@ module.exports = class categoriasCrud{
                   }
                   novaCategoria.slug = slug(novaCategoria.slug)
                   new categoria(novaCategoria).save().then(()=>{
-                      console.log("Categoria criada com sucesso")
+                      req.flash("success_msg","Categoria criada com sucesso")
                       res.redirect("/admin/categorias")
                   }).catch((err)=>{
-                      console.log("erro ao criar categoria: "+err)
+                      req.flash("error_msg","Erro ao criar categoria")
                       req.redirect("/admin/categorias")
                   })
                }
@@ -87,13 +87,13 @@ module.exports = class categoriasCrud{
     }
 
     deleteCategoria(req,res){   
-        postagem.deleteOne({_id: req.params.id}).then(()=>{
-            req.flash("success_msg","Postagem deletada com sucesso")
-            res.redirect('/admin/postagens')
+        categoria.deleteOne({_id: req.params.id}).then(()=>{
+            req.flash("success_msg","Categoria deletada com sucesso")
+            res.redirect('/admin/categorias')
         }).catch((err)=>{
             console.log("Erro ao deletar postagem: "+err)
-            req.flash("error_msg","Erro ao deletar postagem")
-       res.redirect("/admin/postagens")
+            req.flash("error_msg","Erro ao deletar categoria")
+       res.redirect("/admin/categorias")
         })
     } 
  
