@@ -61,7 +61,7 @@ module.exports = class userController{
                                             req.flash("success_msg","Bem vindo "+req.user.nome+"!")
                                             res.redirect('/')
                                         })*/
-                                            
+                                        
                                         req.flash("success_msg","Usuário criado com sucesso")
                                         res.redirect('/')
                                     }).catch((err)=>{
